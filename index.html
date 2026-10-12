@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美樂盛贸易有限公司 | Mayluck Trading Limited</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        crystal: {
+                            50: '#FBF8FF',
+                            100: '#F3E8FF',
+                            200: '#E9D5FF',
+                            300: '#D8B4FE',
+                            400: '#C084FC',
+                            500: '#A855F7',
+                            600: '#9333EA',
+                            700: '#7E22CE',
+                            800: '#6B21A8',
+                            900: '#581C87',
+                            dark: '#12071F',
+                        }
+                    },
+                    boxShadow: {
+                        'crystal': '0 8px 32px 0 rgba(147, 51, 234, 0.08)',
+                        'crystal-hover': '0 12px 40px 0 rgba(147, 51, 234, 0.18)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Glassmorphism Effects */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(233, 213, 255, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(233, 213, 255, 0.6);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+
+        .crystal-gradient-text {
+            background: linear-gradient(135deg, #6B21A8 0%, #9333EA 50%, #C084FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .crystal-gradient-bg {
+            background: linear-gradient(135deg, #7E22CE 0%, #9333EA 50%, #A855F7 100%);
+        }
+
+        .bg-mesh {
+            background-color: #fbf8ff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(243, 232, 255, 0.8) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(233, 213, 255, 0.5) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(243, 232, 255, 0.8) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(233, 213, 255, 0.5) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-mesh text-slate-800 antialiased selection:bg-crystal-200 selection:text-crystal-900">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo / Company Name -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl crystal-gradient-bg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform duration-300">
+                        M
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-lg text-slate-900 tracking-tight group-hover:text-crystal-700 transition-colors">美樂盛贸易</span>
+                        <span class="text-xs text-crystal-600 tracking-wider uppercase font-medium">Mayluck Trading</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-crystal-700 transition-colors">关于我们</a>
+                    <a href="#services" class="text-sm font-medium text-slate-600 hover:text-crystal-700 transition-colors">业务范围</a>
+                    <a href="#advantages" class="text-sm font-medium text-slate-600 hover:text-crystal-700 transition-colors">核心优势</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-crystal-700 transition-colors">联系我们</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white crystal-gradient-bg rounded-xl shadow-crystal hover:opacity-95 transition-all duration-200 hover:-translate-y-0.5">
+                        商务洽谈
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-crystal-700 hover:bg-crystal-50 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-crystal-100 bg-white/95 backdrop-blur-md px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-crystal-50 hover:text-crystal-700">关于我们</a>
+            <a href="#services" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-crystal-50 hover:text-crystal-700">业务范围</a>
+            <a href="#advantages" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-crystal-50 hover:text-crystal-700">核心优势</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-crystal-50 hover:text-crystal-700">联系我们</a>
+            <div class="pt-2">
+                <a href="#contact" class="mobile-link block w-full text-center px-5 py-2.5 text-sm font-medium text-white crystal-gradient-bg rounded-xl shadow-md">
+                    商务洽谈
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-crystal-100/80 border border-crystal-200/60 text-crystal-800 text-xs font-semibold mb-6 shadow-sm">
+                    <span class="flex h-2 w-2 rounded-full bg-crystal-500 animate-pulse"></span>
+                    <span>立足香港 · 通达全球</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
+                    连接全球商业生态 <br>
+                    <span class="crystal-gradient-text">赋能高品质国际贸易</span>
+                </h1>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed font-normal">
+                    美樂盛贸易有限公司（Mayluck Trading Limited）依托香港国际贸易与金融中心优势，致力于为全球客户提供专业、高效的进出口与供应链一体化服务。
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-base font-medium text-white crystal-gradient-bg rounded-xl shadow-crystal hover:shadow-crystal-hover hover:-translate-y-0.5 transition-all duration-300">
+                        获取贸易方案
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </a>
+                    <a href="#about" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-base font-medium text-slate-700 bg-white/80 hover:bg-white border border-slate-200 hover:border-crystal-300 rounded-xl transition-all duration-200">
+                        了解美樂盛
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Subtle Background Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-crystal-300/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-md bg-crystal-100 text-crystal-800 text-xs font-semibold">
+                        ABOUT MAYLUCK
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+                        关于 美樂盛贸易有限公司
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        美樂盛贸易有限公司（Mayluck Trading Limited）总部位于香港九龙繁华工业与贸易核心区——观塘东太阳工业中心。作为一家现代化综合性国际贸易企业，我们深耕国际市场，秉承“诚信、专业、高效、共赢”的经营理念。
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        公司凭借香港独特的自由港政策、完善的金融体系及便利的物流枢纽网络，构建了覆盖全球多国与地区的贸易通路。无论是大宗商品调配、跨国采购，还是跨境供应链服务，美樂盛均为客户创造卓越价值。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl glass-card border border-crystal-100">
+                            <div class="text-3xl font-bold text-crystal-700 mb-1">HK</div>
+                            <div class="text-xs text-slate-500 font-medium">香港枢纽优势</div>
+                        </div>
+                        <div class="p-4 rounded-xl glass-card border border-crystal-100">
+                            <div class="text-3xl font-bold text-crystal-700 mb-1">100%</div>
+                            <div class="text-xs text-slate-500 font-medium">专业可靠保障</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-2xl p-8 glass-card border border-crystal-200/80 shadow-crystal">
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-crystal-100 flex items-center justify-center shrink-0 text-crystal-700">
+                                    <i data-lucide="building-2" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-lg">规范化注册管理</h3>
+                                    <p class="text-slate-600 text-sm mt-1">具备合法合规的香港商业注册资质，全面保障国际合作合法权益与交易安全。</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-crystal-100"></div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-crystal-100 flex items-center justify-center shrink-0 text-crystal-700">
+                                    <i data-lucide="globe-2" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-lg">全球视野与资源</h3>
+                                    <p class="text-slate-600 text-sm mt-1">连接亚洲、欧洲、美洲等主要市场，提供端到端的一站式商品进出口通道。</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-crystal-100"></div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-crystal-100 flex items-center justify-center shrink-0 text-crystal-700">
+                                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-lg">高标准风控体系</h3>
+                                    <p class="text-slate-600 text-sm mt-1">严苛的供应商合规审查与质量检验流程，确保每一批交付物均符合最高标准。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Scope / Services Section -->
+    <section id="services" class="py-20 bg-white/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-block px-3 py-1 rounded-md bg-crystal-100 text-crystal-800 text-xs font-semibold mb-3">
+                    SERVICES & SCOPE
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">核心业务范围</h2>
+                <p class="text-slate-600 mt-3 text-sm">专业化与多样化的业务领域，满足全球客户差异化需求</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-crystal">
+                    <div class="w-14 h-14 rounded-2xl bg-crystal-100 flex items-center justify-center text-crystal-700 mb-6">
+                        <i data-lucide="arrow-left-right" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">全球进出口贸易</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        涵盖各类优质商品的国际进出口代办与直接自营业务，快速响应国际市场供需变化。
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-crystal">
+                    <div class="w-14 h-14 rounded-2xl bg-crystal-100 flex items-center justify-center text-crystal-700 mb-6">
+                        <i data-lucide="layers" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">供应链管理与优化</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        提供涵盖仓储、订舱、通关、转口贸易的全流程供应链综合解决方案，降本增效。
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-crystal">
+                    <div class="w-14 h-14 rounded-2xl bg-crystal-100 flex items-center justify-center text-crystal-700 mb-6">
+                        <i data-lucide="shopping-bag" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">跨境电商与物流</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        协同国际物流网络，为跨境电商平台与品牌方提供多渠道商品分销与履约支持。
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="p-8 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-crystal">
+                    <div class="w-14 h-14 rounded-2xl bg-crystal-100 flex items-center justify-center text-crystal-700 mb-6">
+                        <i data-lucide="search-check" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">产品采购与质检</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        根据客户特定需求精准对接上游优质货源，建立严格的出货质检与验货标准。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section id="advantages" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-block px-3 py-1 rounded-md bg-crystal-100 text-crystal-800 text-xs font-semibold mb-3">
+                    WHY CHOOSE US
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">我们的核心优势</h2>
+                <p class="text-slate-600 mt-3 text-sm">选择美樂盛，选择高效稳定的国际贸易伙伴</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-white border border-crystal-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-crystal-600 font-bold text-sm uppercase tracking-widest mb-2">01 / HUB</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">地理与自由港优势</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">依托香港自由贸易港与完善的法律金融环境，享受高效便捷的资金清算与物流转运。</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white border border-crystal-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-crystal-600 font-bold text-sm uppercase tracking-widest mb-2">02 / NETWORK</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">广泛的国际合作</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">拥有稳定成熟的国际供应链网络，能够迅速对接多语种多区域的商业合作。</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-white border border-crystal-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-crystal-600 font-bold text-sm uppercase tracking-widest mb-2">03 / SERVICE</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">专属一对一服务</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">专业客服与贸易专家跟进全程，提供响应迅速、沟通无缝的定制化贸易体验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-crystal-50/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-block px-3 py-1 rounded-md bg-crystal-200/70 text-crystal-900 text-xs font-semibold mb-3">
+                    CONTACT US
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">联系美樂盛</h2>
+                <p class="text-slate-600 mt-3 text-sm">欢迎随时与我们取得联系，开启合作共赢新篇章</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Info Cards -->
+                <div class="lg:col-span-5 space-y-4">
+                    <!-- Address Card -->
+                    <div class="p-6 rounded-2xl glass-card border border-crystal-200/60 flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl crystal-gradient-bg flex items-center justify-center text-white shrink-0 shadow-sm">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-crystal-700 uppercase tracking-wider">公司地址 / Address</div>
+                            <div class="font-semibold text-slate-900 mt-1 text-sm">WORKSHOP 60, 3/F, BLOCK A, EAST SUN INDUSTRIAL CENTRE, NO.16 SHING YIP STREET, KWUN TONG KLN, HONG KONG</div>
+                            <div class="text-xs text-slate-500 mt-1">香港九龙观塘成业街16号东太阳工业中心A座3楼60室</div>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <a href="mailto:maylucktrading@outlook.com" class="block p-6 rounded-2xl glass-card border border-crystal-200/60 hover:border-crystal-400 transition-colors flex items-start space-x-4 group">
+                        <div class="w-12 h-12 rounded-xl crystal-gradient-bg flex items-center justify-center text-white shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-crystal-700 uppercase tracking-wider">电子邮箱 / Email</div>
+                            <div class="font-semibold text-slate-900 mt-1 text-sm group-hover:text-crystal-700 transition-colors">maylucktrading@outlook.com</div>
+                            <div class="text-xs text-slate-500 mt-1">点击直接发送邮件与我们取得联系</div>
+                        </div>
+                    </a>
+
+                    <!-- Phone Card -->
+                    <a href="tel:+17625886822" class="block p-6 rounded-2xl glass-card border border-crystal-200/60 hover:border-crystal-400 transition-colors flex items-start space-x-4 group">
+                        <div class="w-12 h-12 rounded-xl crystal-gradient-bg flex items-center justify-center text-white shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                            <i data-lucide="phone" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-semibold text-crystal-700 uppercase tracking-wider">联系电话 / Phone</div>
+                            <div class="font-semibold text-slate-900 mt-1 text-sm group-hover:text-crystal-700 transition-colors">+1 762 588 6822</div>
+                            <div class="text-xs text-slate-500 mt-1">官方商务联系电话</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Inquiry Form -->
+                <div class="lg:col-span-7">
+                    <div class="p-8 rounded-2xl glass-card border border-crystal-200/60 shadow-crystal">
+                        <h3 class="text-xl font-bold text-slate-900 mb-6">发送在线咨询</h3>
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-700 mb-1">您的姓名 *</label>
+                                    <input type="text" required class="w-full px-4 py-3 rounded-xl bg-white/80 border border-crystal-200 focus:outline-none focus:ring-2 focus:ring-crystal-500/50 text-sm" placeholder="例如：张先生">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-700 mb-1">联系电话 / 微信</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-xl bg-white/80 border border-crystal-200 focus:outline-none focus:ring-2 focus:ring-crystal-500/50 text-sm" placeholder="手机号或社交账号">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-700 mb-1">电子邮箱 *</label>
+                                <input type="email" required class="w-full px-4 py-3 rounded-xl bg-white/80 border border-crystal-200 focus:outline-none focus:ring-2 focus:ring-crystal-500/50 text-sm" placeholder="yourname@domain.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-700 mb-1">咨询内容 *</label>
+                                <textarea rows="4" required class="w-full px-4 py-3 rounded-xl bg-white/80 border border-crystal-200 focus:outline-none focus:ring-2 focus:ring-crystal-500/50 text-sm" placeholder="请简要描述您的采购或合作需求..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 px-6 rounded-xl text-white crystal-gradient-bg font-medium text-sm shadow-crystal hover:opacity-95 transition-all">
+                                提交咨询信息
+                            </button>
+                        </form>
+                        <div id="form-toast" class="hidden mt-4 p-3 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs text-center font-medium">
+                            ✓ 消息已成功提交，我们将尽快与您联系！
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-crystal-dark text-slate-400 py-12 border-t border-crystal-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Brand Info -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg crystal-gradient-bg flex items-center justify-center text-white font-bold text-base">
+                        M
+                    </div>
+                    <div>
+                        <span class="text-white font-semibold text-base block">美樂盛贸易有限公司</span>
+                        <span class="text-xs text-slate-500">Mayluck Trading Limited</span>
+                    </div>
+                </div>
+
+                <!-- Footer Navigation -->
+                <div class="flex space-x-6 text-xs text-slate-400">
+                    <a href="#about" class="hover:text-white transition-colors">关于我们</a>
+                    <a href="#services" class="hover:text-white transition-colors">业务范围</a>
+                    <a href="#advantages" class="hover:text-white transition-colors">核心优势</a>
+                    <a href="#contact" class="hover:text-white transition-colors">联系方式</a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-xs text-slate-500 text-center md:text-right">
+                    © <span id="current-year"></span> Mayluck Trading Limited. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set Current Year dynamically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Form Submit Simulation
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const toast = document.getElementById('form-toast');
+            toast.classList.remove('hidden');
+            event.target.reset();
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
